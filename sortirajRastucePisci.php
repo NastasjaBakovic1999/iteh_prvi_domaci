@@ -119,6 +119,33 @@
     -->
 	
 	<!--AJAX funkcija-->
-
+	 <script>
+          function showHint(str) {
+          var xhttp;
+          if (str.length == 0) { 
+            document.getElementById("txtHint").innerHTML = "";
+            return;
+          }
+          xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              document.getElementById("txtHint").innerHTML = this.responseText;
+            }
+          };
+          xhttp.open("GET", "ajaxPomoc.php?q="+str, true);
+          xhttp.send();   
+        }
+    </script>
+	<!--Pretraga po zanru-->
+		 <script>
+        $(document).ready(function(){
+          $("#myInput").on("keyup", function() {
+            var value = $(this).val().toLowerCase();
+            $("#tabela tr").filter(function() {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+            });
+          });
+        });
+</script>
   </body>
 </html>
