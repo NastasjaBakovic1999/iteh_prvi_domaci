@@ -59,4 +59,23 @@
 			return $data;
 		}
 		
+			public function delete($id){
+			$query = "DELETE from knjige WHERE KnigaID='$id'";
+			if($sql = $this->dblink->query($query)){
+				return true;
+			}
+			else return false;
+		}
+
+			public function vratiZanr(){
+    		$data=null;
+    		$query="select Zanr from knjige";
+    
+   		 	if($sql=$this->dblink->query($query)){
+    		while($row=mysqli_fetch_assoc($sql)){
+   	 		$data[]=$row;
+    			} 
+    			}
+    			return  $data;
+    			}
 ?>
