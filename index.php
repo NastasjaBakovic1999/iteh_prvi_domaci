@@ -17,6 +17,50 @@
   	</li>
 	</ul>
 
+	</div>
+</nav>
+    <div class="container" >
+      <div class="row" >
+        <div class="col-md-12 mt-5">
+          <h1 class="text-center" style="color:white; font-weight:700; font-size:3rem">Dodaj u knjizaru</h1>
+          <hr style="height: 2px;background-color: #89cff0; width: 60%; margin-left:225px;">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-5 mx-auto">
+		
+     
+		  
+          <form name="form1"action="index.php" method="post" onsubmit="return validacija()" style="background-color: rgba(0, 0, 0, 0.3); padding:10px">
+              <div class="form-group" style="color: white; font-weight:bold;">
+              <label for="">Knjiga</label>
+			   <input type="text" name="knjiga" class="form-control">
+            </div> 
+            
+            <div class="form-group" style="color: white; font-weight:bold;">
+              <label for="">Autor</label>
+              <input type="text" name="autor" class="form-control">
+            </div>
+            <div class="form-group" style="color:white; font-weight:bold;">
+			<label for="">Zanr</label>
+             <input type="text" name="zanr" class="form-control">
+				</div> 
+				
+			<div class="form-group"style="color:white; font-weight:bold;>
+      <label for="izdavac" >Naziv izdavačke kuće</label>
+      <span class="error"></span>
+      <select class="form-control" id="IzdavacID" name="izdavac">
+     
+      </select>
+    </div>
+            <div class="form-group">
+              <button type="submit" name="submit" class="btn btn-primary" style="background-color:  #89cff0; font-weight:bold; border-color: white;">Dodaj</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
    <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
