@@ -19,6 +19,93 @@
   </li>
 </ul>
   <body style="background-image: url('red.jpg'); background-repeat: no-repeat; background-position: center;background-size: cover;">
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 mt-5">
+			<h1 class="text-center" style="color:black">Knjižara</h1>
+			<hr style="height:1 px;color:black;background-color:black;">
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-12">
+		<table>
+		<tr>
+		<th>
+			<p style="color:#89cff0); margin-right:50px; font-weight:bold;">Pronađite knjigu na osnovu žanra: </p> 
+			<p> <span id="txtHint"></span> </p>
+                 
+            <input id="myInput" type="text" placeholder="Pretrazi.." onkeyup="showHint(this.value)" style="margin-bottom:5%">
+            <br>
+			</th>
+		
+			<th>
+			
+			<a class="nav-link" href="sortirajOpadajuce.php">
+            <button type="submit" style="background-color:#89cff0; border-color:transparent"  name="nazad" class="btn btn-primary">Sortiraj opadajuce</button>
+			</a>
+			
+			</th>
+			
+			<th>
+			
+			<a class="nav-link" href="sortirajRastucePisci.php">
+			<button type="submit" style="background-color:#89cff0; border-color:transparent; margin-left=60%"  name="nazad" class="btn btn-primary">Sortiraj rastuce</button>
+			</a>
+			
+			</th>
+			</tr>
+		
+		</table>
+		<table class="table" style="background-color:rgba(255, 255, 255,0.6);">
+			<thead>
+			
+				<tr>
+					<th>Redni broj</th>
+					<th>Naziv</th>
+					<th>Autor</th>
+					<th>Zanr</th>
+					<th>Izdavačka kuća</th>
+					<th>Operacije</th>
+				</tr>
+			</thead>
+			<tbody id="tabela">
+	
+			
+			<?php
+			include 'database.php';
+			 $database = new Database();
+			 $rows = $database->fetch();
+			 $i=1;
+			 if(!empty($rows)){
+				 foreach($rows as $row){
+					 
+				
+			?>
+			
+			<tr>
+			<td><?php echo $i++ ?></td>
+			<td><?php echo $row['Naziv'] ?></td>
+			<td><?php echo $row['Autor']?></td>
+			<td><?php echo $row['Zanr'] ?></td>
+			<td><?php echo $row['NazivIK'] ?></td>
+			<td>
+			<a href="select.php?id=<?php echo $row['KnigaID']; ?>" class="badge badge-info">Prikaži detalje</a>
+			<a href="delete.php?id=<?php echo $row['KnigaID']; ?>" class="badge badge-danger">Obriši</a>
+			<a href="edit.php?id=<?php echo $row['KnigaID']; ?>" class="badge badge-success">Izmeni</a>
+			</td>
+			</tr>
+			<?php
+				 }
+			} else{
+				echo "Nema podataka";
+			}
+			?>
+			</tbody>
+		</table>
+		</div>
+	</div>
+  </div>
 
      <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
