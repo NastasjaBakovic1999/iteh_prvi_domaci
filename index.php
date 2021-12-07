@@ -28,8 +28,7 @@
       </div>
       <div class="row">
         <div class="col-md-5 mx-auto">
-		
-     
+
 		  
           <form name="form1"action="index.php" method="post" onsubmit="return validacija()" style="background-color: rgba(0, 0, 0, 0.3); padding:10px">
               <div class="form-group" style="color: white; font-weight:bold;">
@@ -50,6 +49,8 @@
       <label for="izdavac" >Naziv izdavačke kuće</label>
       <span class="error"></span>
       <select class="form-control" id="IzdavacID" name="izdavac">
+     
+      ?>
      
       </select>
     </div>
