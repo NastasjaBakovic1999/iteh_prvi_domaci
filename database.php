@@ -19,8 +19,9 @@
 		public function vrati(){
     return $this->dblink;
 }
-
-public function insert(){
+		
+		
+		public function insert(){
 
 			if (isset($_POST['submit'])) {
 				if (isset($_POST['knjiga']) && isset($_POST['zanr']) && isset($_POST['autor'])) {
@@ -47,8 +48,7 @@ public function insert(){
 				}
 			}
 		}
-
-			public function fetch(){
+		public function fetch(){
 			$data=null; 
 			$query = "SELECT k.KnigaID, k.Naziv,k.Autor,k.Zanr,i.NazivIK as NazivIK from knjige k join izdavac i on i.ID=k.IzdavacID";
 			if($sql = $this->dblink->query($query)){
