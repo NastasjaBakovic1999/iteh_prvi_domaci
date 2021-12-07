@@ -54,7 +54,25 @@
       <label for="izdavac" >Naziv izdavačke kuće</label>
       <span class="error"></span>
       <select class="form-control" id="IzdavacID" name="izdavac">
-  
+     <?php
+      $dblink=$database->vrati();
+	$upit="SELECT * FROM izdavac";
+     $izdavac=$dblink->query($upit);?>
+      
+      <option disabled selected value>Odaberite izdavačku kuću: </option>
+      <?php
+       if(!empty($_POST['izdavac'])) {
+      while($red=$izdavac->fetch_object()){?>
+      <option <?php if($_POST['izdavac']==$red->ID){echo("selected");}?> value='<?php echo $red->ID; ?>' >
+      <?php echo $red->NazivIK; ?></option>
+      <?php
+      }}else{
+        while($red=$izdavac->fetch_object()){?>
+      <option value='<?php echo $red->ID; ?>'>
+      <?php echo $red->NazivIK; ?></option>
+      <?php
+      }}
+      ?>
      
       </select>
     </div>
@@ -78,6 +96,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     -->
 	
-	<script>
+
    </body>
 </html>
