@@ -78,4 +78,24 @@
     			}
     			return  $data;
     			}
+
+				public function edit($id){
+			$data = null;
+			$query = "SELECT * from knjige WHERE KnigaID='$id'";
+			if($sql = $this->dblink->query($query)){
+				while ($row = $sql -> fetch_assoc()){
+					$data =$row;
+				}
+			}
+			return $data; 
+		}
+		
+		public function update($data){
+			$query = "UPDATE knjige SET Naziv='$data[Naziv]', Zanr='$data[Zanr]',Autor='$data[Autor]', IzdavacID='$data[IzdavacID]' WHERE KnigaID='$data[id]'";
+			if($sql = $this->dblink->query($query)){
+				return true;
+			}else {
+				return false;
+			}
+		}	
 ?>
