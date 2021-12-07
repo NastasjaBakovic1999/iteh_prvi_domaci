@@ -59,27 +59,39 @@
 			return $data;
 		}
 		
-			public function delete($id){
+		public function delete($id){
 			$query = "DELETE from knjige WHERE KnigaID='$id'";
 			if($sql = $this->dblink->query($query)){
 				return true;
 			}
 			else return false;
 		}
-
-			public function vratiZanr(){
-    		$data=null;
-    		$query="select Zanr from knjige";
+		
+		public function vratiZanr(){
+    $data=null;
+    $query="select Zanr from knjige";
     
-   		 	if($sql=$this->dblink->query($query)){
-    		while($row=mysqli_fetch_assoc($sql)){
-   	 		$data[]=$row;
-    			} 
-    			}
-    			return  $data;
-    			}
-
-				public function edit($id){
+    if($sql=$this->dblink->query($query)){
+    while($row=mysqli_fetch_assoc($sql)){
+    $data[]=$row;
+    } 
+    }
+    return  $data;
+    }
+		
+		public function fetch_single($id){
+			$data = null;
+			$query = "SELECT k.KnigaID, k.Naziv,k.Autor,k.Zanr,i.NazivIK as NazivIK 
+			from knjige k join izdavac i on i.ID=k.IzdavacID WHERE k.KnigaID='$id'";
+			if($sql = $this->dblink->query($query)){
+				while ($row = $sql -> fetch_assoc()){
+					$data =$row;
+				}
+			}
+			return $data;
+		}
+		
+		public function edit($id){
 			$data = null;
 			$query = "SELECT * from knjige WHERE KnigaID='$id'";
 			if($sql = $this->dblink->query($query)){
@@ -97,8 +109,7 @@
 			}else {
 				return false;
 			}
-		}	
-
+		}
 		public function prikazSortiranjeRastuce(){
     $data=null;
     $query="SELECT k.KnigaID, k.Naziv,k.Autor,k.Zanr,i.NazivIK as NazivIK 
@@ -110,7 +121,6 @@
     }
     return  $data;
 }
-
 	public function prikazSortiranjeOpadajuce(){
     $data=null;
 	$query="SELECT k.KnigaID, k.Naziv,k.Autor,k.Zanr,i.NazivIK as NazivIK 
@@ -122,4 +132,5 @@
     }
     return  $data;
 }
-?>
+    }
+ ?>
