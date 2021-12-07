@@ -98,4 +98,16 @@
 				return false;
 			}
 		}	
+
+		public function prikazSortiranjeRastuce(){
+    $data=null;
+    $query="SELECT k.KnigaID, k.Naziv,k.Autor,k.Zanr,i.NazivIK as NazivIK 
+			from knjige k join izdavac i on i.ID=k.IzdavacID order by k.Naziv asc";
+    if($sql=$this->dblink->query($query)){
+    while($row=mysqli_fetch_assoc($sql)){
+    $data[]=$row;
+    }   
+    }
+    return  $data;
+}
 ?>
