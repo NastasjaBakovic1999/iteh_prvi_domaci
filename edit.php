@@ -80,7 +80,19 @@
 				<div class="form-group">
       <label for="izdavac" style="color:#white; font-weight:bold;">Izdavačka kuća</label>
       <select class="form-control" id="izdavac" value="<?php echo $row['IzdavacID'];?>" name="izdavac">
-      
+      <?php
+            $dblink=$database->vrati();
+            $upit="SELECT * FROM izdavac";
+            $izdavac=$dblink->query($upit);
+		?>
+
+		<?php
+        while($red=$izdavac->fetch_object()){?>
+      <option <?php if($row['IzdavacID']==$red->ID){echo("selected");}?> value='<?php echo $red->ID; ?>' >
+      <?php echo $red->NazivIK; ?></option>
+      <?php
+      }
+      ?>
       </select>
     </div>
 			
@@ -105,7 +117,24 @@
 	<br>
 	<div id="txtHint"> </div>
 	</div>
-
+<script>
+function prikaziIK(str) {
+  var xhttp;    
+  if (str == "") {
+    document.getElementById("txtHint").innerHTML = "";
+    return;
+  }
+  console.log(str);
+  xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("txtHint").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "prikaziIK.php?q="+str, true);
+  xhttp.send();
+}
+</script>
 
 
     <!-- Optional JavaScript; choose one of the two! -->
