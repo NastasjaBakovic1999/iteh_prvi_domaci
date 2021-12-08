@@ -20,5 +20,16 @@
 </ul>
   <body style="background-image: url('red.jpg'); height:100%;width:100%  background-repeat: no-repeat; background-position: center;background-size: cover;">
 
+  	<style>
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+}
+th,td {
+  padding: 5px;
+}
+</style>
    </body>
 </html>
