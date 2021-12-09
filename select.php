@@ -19,7 +19,48 @@
   </li>
 </ul>
   <body style="background-image: url('red.jpg'); background-repeat: no-repeat; background-position: center;background-size: cover;">
+    <div class="container">
+		<div class="row">
+		<div class="col-md-12 mt-5">
+			<h1 class="text-center">Knjižara</h1>
+			<hr style="height:1 px;color:black;background-color:black;">
+		</div>
+		</div>
+		 <?php
 
+              include 'database.php';
+              $database = new Database();
+              $id = $_REQUEST['id'];
+              $row = $database->fetch_single($id);
+              if(!empty($row)){
+
+          ?>
+		<div class="row">
+			<div class="col-md-5 mx-auto">
+				<div class="card"style="background-color:rgba(255, 255, 255,0.4);">
+					<div class="card-header">
+						Knjiga koju ste odabrali
+					</div>
+					<div class="card-body">
+					
+          
+              <p>Naziv: <?php echo $row['Naziv']; ?></p>
+              <p>Autor: <?php echo $row['Autor']; ?></p>
+              <p>Žanr: <?php echo $row['Zanr']; ?></p>
+              <p>Izdavačka kuća: <?php echo $row['NazivIK']; ?></p>
+            </div>
+          </div>
+          <?php
+            }else{
+            echo "Nema podataka o odabranoj predstavi";
+          }
+          ?>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
   
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
